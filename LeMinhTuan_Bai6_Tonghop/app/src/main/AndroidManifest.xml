@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="28" android:compileSdkVersionCodename="9" android:versionCode="3052" android:versionName="3.0.3" package="com.theappninjas.gpsjoystick" platformBuildVersionCode="28" platformBuildVersionName="9">
+    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="28" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INSTALL_LOCATION_PROVIDER" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_COMPONENT_ENABLED_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-feature android:name="android.hardware.location.network" android:required="false" />
+    <uses-feature android:name="android.hardware.location.gps" android:required="false" />
+    <uses-feature android:glEsVersion="0x20000" android:required="true" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <application android:allowBackup="true" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:name="com.theappninjas.gpsjoystick.app.App" android:networkSecurityConfig="@xml/network_security_config" android:supportsRtl="true" android:theme="@style/AppTheme">
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+        <activity android:label="@string/app_name" android:launchMode="singleTask" android:name="com.theappninjas.gpsjoystick.ui.main.MainActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="geo" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
+                <data android:pathPattern=".*\\.gpx" />
+            </intent-filter>
+            <intent-filter>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="maps.yandex.ru" />
+                <data android:host="maps.yandex.com" />
+                <data android:host="www.openstreetmap.org" />
+                <data android:host="openstreetmap.org" />
+                <data android:host="osm.org" />
+                <data android:host="map.baidu.cn" />
+                <data android:host="map.baidu.com" />
+                <data android:host="wb.amap.com" />
+                <data android:host="www.amap.com" />
+                <data android:host="here.com" />
+                <data android:host="www.here.com" />
+                <data android:host="share.here.com" />
+                <data android:host="map.wap.qq.com" />
+                <data android:host="map.qq.com" />
+                <data android:host="maps.apple.com" />
+                <data android:host="maps.google.com" />
+                <data android:host="google.com" />
+                <data android:host="www.google.com" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity android:label="@string/favorites" android:name="com.theappninjas.gpsjoystick.ui.favorites.FavoritesActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/edit_favorite" android:name="com.theappninjas.gpsjoystick.ui.favorites.edit.EditFavoriteActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/routes" android:name="com.theappninjas.gpsjoystick.ui.routes.RoutesActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/edit_route" android:name="com.theappninjas.gpsjoystick.ui.routes.edit.EditRouteActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/gpx_import" android:name="com.theappninjas.gpsjoystick.ui.gpx.GPXImportActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/gpx_export" android:name="com.theappninjas.gpsjoystick.ui.gpx.GPXExportActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/markers" android:name="com.theappninjas.gpsjoystick.ui.markertypes.MarkerTypesActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/settings" android:name="com.theappninjas.gpsjoystick.ui.settings.SettingsActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan" />
+        <activity android:label="@string/about" android:name="com.theappninjas.gpsjoystick.ui.about.AboutActivity" android:screenOrientation="portrait" />
+        <activity android:launchMode="singleTask" android:name="com.theappninjas.gpsjoystick.ui.mocking.MockingActivity" android:noHistory="true" android:taskAffinity="" android:theme="@style/TransparentTheme" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MoPubActivity" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidActivity" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.common.MoPubBrowser" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.MraidVideoPlayerActivity" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.mopub.mobileads.RewardedMraidActivity" />
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:name="com.google.android.gms.ads.AdActivity" android:theme="@android:style/Theme.Translucent" />
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.facebook.ads.AudienceNetworkActivity" />
+        <service android:name="com.theappninjas.gpsjoystick.service.OverlayService" android:process=":overlay" />
+        <service android:name="com.theappninjas.gpsjoystick.service.MapOverlayService" android:process=":map_overlay" />
+        <service android:name="com.theappninjas.gpsjoystick.service.CustomFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <provider android:authorities="com.theappninjas.gpsjoystick.provider" android:exported="false" android:grantUriPermissions="true" android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@mipmap/ic_notification" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color" android:resource="@color/primary" />
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyB_QQh9CkorTDWM3d-8F-h_sG7YWvH_0T0" />
+        <meta-data android:name="io.fabric.ApiKey" android:value="7792fbe36da57f003ad9e28bbfa6a5cfc4963819" />
+        <meta-data android:name="presage_key" android:value="270782" />
+        <service android:enabled="true" android:exported="true" android:name="io.presage.PresageService" android:process=":remote">
+            <intent-filter>
+                <action android:name="io.presage.PresageService.PIVOT" />
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:hardwareAccelerated="true" android:label="@string/app_name" android:name="io.presage.activities.PresageActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="io.presage.intent.action.LAUNCH_WEBVIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="io.presage.receiver.NetworkChangeReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+                <action android:name="io.presage.receiver.NetworkChangeReceiver.ONDESTROY" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="io.presage.receiver.AlarmReceiver" />
+        <provider android:authorities="com.theappninjas.gpsjoystick.PresageProvider" android:enabled="true" android:exported="true" android:name="io.presage.provider.PresageProvider" />
+        <meta-data android:name="android.support.VERSION" android:value="26.1.0" />
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider android:authorities="com.theappninjas.gpsjoystick.firebaseinitprovider" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider" />
+        <service android:exported="true" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar" />
+        </service>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <service android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>
